@@ -1,0 +1,20 @@
+{
+  "library": "spring-boot",
+  "basePackage": "com.cjlyth.generated",
+  "configPackage":"com.cjlyth.generated.config",
+  "modelPackage": "com.cjlyth.generated.model",
+  "apiPackage": "com.cjlyth.generated.api",
+  "invokerPackage": "com.cjlyth.generated.invoker",
+  "artifactId": "cjlyth-generated",
+  "artifactVersion": "0.0.1-SNAPSHOT",
+  "groupId": "com.cjlyth",
+  "serializableModel": "true",
+  "hideGenerationTimestamp": "true",
+  "dateLibrary": "java8",
+  "java8": "java8",
+  "title": "Stuff API",
+  "useBeanValidation": "true",
+  "swaggerDocketConfig": "false",
+  "interfaceOnly": "true",
+  "delegatePattern": "false"
+}

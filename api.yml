@@ -1,0 +1,29 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Problem Spec
+  description: There is a problem with the $ref when generating code.
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/hello':
+    get:
+      summary: Simple endpoint to get stuff
+      operationId: getStuff
+      responses:
+        '200':
+          $ref: '#/responses/Stuff'
+responses:
+  Stuff:
+    description: returns stuff
+    schema:
+      $ref: '#/definitions/Stuff'
+definitions:
+  Stuff:
+    description: The unique identifier for stuff.
+    type: string
+    pattern: '^[0-9]{16}$'
+    example: '1234567812345678'
