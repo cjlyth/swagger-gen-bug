@@ -1,4 +1,4 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
   version: 1.0.0
   title: Problem Spec
@@ -9,21 +9,26 @@ consumes:
 produces:
   - application/json
 paths:
-  '/hello':
+  "/hello":
     get:
       summary: Simple endpoint to get stuff
       operationId: getStuff
       responses:
-        '200':
-          $ref: '#/responses/Stuff'
+        "200":
+          $ref: "#/responses/Stuff"
 responses:
   Stuff:
     description: returns stuff
     schema:
-      $ref: '#/definitions/Stuff'
+      $ref: "#/definitions/Stuff"
 definitions:
   Stuff:
     description: The unique identifier for stuff.
-    type: string
-    pattern: '^[0-9]{16}$'
-    example: '1234567812345678'
+    type: object
+    properties:
+      id:
+        description: The unique identifier for stuff.
+        type: string
+        format: text
+        pattern: '^[0-9a-z\-]{36}$'
+        example: c9e9381e-354e-c37c-e053-5ca8e70a0cbb
