@@ -22,13 +22,15 @@ responses:
     schema:
       $ref: "#/definitions/Stuff"
 definitions:
+  StuffID:
+    description: The unique identifier for stuff.
+    type: string
+    format: text
+    pattern: '^[0-9a-z\-]{36}$'
+    example: c9e9381e-354e-c37c-e053-5ca8e70a0cbb
   Stuff:
     description: The unique identifier for stuff.
     type: object
     properties:
       id:
-        description: The unique identifier for stuff.
-        type: string
-        format: text
-        pattern: '^[0-9a-z\-]{36}$'
-        example: c9e9381e-354e-c37c-e053-5ca8e70a0cbb
+        $ref: "#definitions/StuffID"
