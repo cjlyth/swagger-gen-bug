@@ -5,9 +5,9 @@ info:
   description: There is a problem with the $ref when generating code.
 basePath: /
 consumes:
-  - application/json
+- application/json
 produces:
-  - application/json
+- application/json
 paths:
   "/hello":
     get:
@@ -22,9 +22,14 @@ responses:
     schema:
       $ref: "#/definitions/Stuff"
 definitions:
-  Stuff:
-    description: The unique identifier for stuff.
-    type: object
+  StuffName:
+    properties:
+      name:
+        description: The name of this thing
+        type: string
+        format: text
+        example: 'a thing'
+  StuffID:
     properties:
       id:
         description: The unique identifier for stuff.
@@ -32,3 +37,9 @@ definitions:
         format: text
         pattern: '^[0-9a-z\-]{36}$'
         example: c9e9381e-354e-c37c-e053-5ca8e70a0cbb
+  Stuff:
+    description: The stuff object.
+    allOf:
+      - type: object
+      - $ref: "#/definitions/StuffID"
+      - $ref: "#/definitions/StuffName"
