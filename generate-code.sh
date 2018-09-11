@@ -5,11 +5,11 @@ rm -Rf target/
 
 # Download the latest generator from the maven repo
 mvn dependency:get \
-  -Ddest=./target/dependency/swagger-codegen-cli-2.4.0-SNAPSHOT.jar \
-  -Dartifact=io.swagger:swagger-codegen-cli:2.4.0-SNAPSHOT
+  -Ddest=./target/dependency/swagger-codegen-cli-3.0.0.jar \
+  -Dartifact=io.swagger.codegen.v3:swagger-codegen-cli:3.0.0
 
 # Generate sources
-java -jar ./target/dependency/swagger-codegen-cli-2.4.0-SNAPSHOT.jar \
+java -jar ./target/dependency/swagger-codegen-cli-3.0.0.jar \
    generate \
    -l spring \
    -c spring-boot-config.json \
@@ -17,4 +17,4 @@ java -jar ./target/dependency/swagger-codegen-cli-2.4.0-SNAPSHOT.jar \
    -o target/generated-sources/swagger
 
 # Try to compile the generated code
-mvn clean package -U -f target/generated-sources/swagger/pom.xml
+# mvn clean package -U -f target/generated-sources/swagger/pom.xml
