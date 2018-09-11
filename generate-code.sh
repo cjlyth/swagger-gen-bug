@@ -17,4 +17,4 @@ java -jar ./target/dependency/swagger-codegen-cli-3.0.0.jar \
    -o target/generated-sources/swagger
 
 # Try to compile the generated code
-# mvn clean package -U -f target/generated-sources/swagger/pom.xml
+mvn clean package -U -f target/generated-sources/swagger/pom.xml

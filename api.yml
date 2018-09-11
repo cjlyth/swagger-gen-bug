@@ -1,47 +1,45 @@
-openapi: 3.0.0
+swagger: "2.0"
 info:
   version: 1.0.0
   title: Problem Spec
   description: There is a problem with the $ref when generating code.
+basePath: /
+consumes:
+- application/json
+produces:
+- application/json
 paths:
-  /hello:
+  "/hello":
     get:
       summary: Simple endpoint to get stuff
       operationId: getStuff
       responses:
         "200":
-          $ref: "#/components/responses/Stuff"
-servers:
-  - url: /
-components:
-  responses:
-    Stuff:
-      description: returns stuff
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Stuff"
-  schemas:
-    StuffName:
-      properties:
-        name:
-          description: The unique identifier for stuff.
-          type: string
-          format: text
-          pattern: '^[0-9a-z\-]{36}$'
-          example: c9e9381e-354e-c37c-e053-5ca8e70a0cbb
-    StuffID:
-      properties:
-        id:
-          description: The unique identifier for stuff.
-          type: string
-          "$ref": "#/definitions/nothing"
-          format: text
-          pattern: '^[0-9a-z\-]{36}$'
-          example: c9e9381e-354e-c37c-e053-5ca8e70a0cbb
-    Stuff:
-      description: The unique identifier for stuff.
-      allOf:
-        - type: object
-        - $ref: "#/components/schemas/StuffID"
-        - $ref: "#/components/schemas/StuffName"
+          $ref: "#/responses/Stuff"
+responses:
+  Stuff:
+    description: returns stuff
+    schema:
+      $ref: "#/definitions/Stuff"
+definitions:
+  StuffName:
+    properties:
+      name:
+        description: The name of this thing
+        type: string
+        format: text
+        example: 'a thing'
+  StuffID:
+    properties:
+      id:
+        description: The unique identifier for stuff.
+        type: string
+        format: text
+        pattern: '^[0-9a-z\-]{36}$'
+        example: c9e9381e-354e-c37c-e053-5ca8e70a0cbb
+  Stuff:
+    description: The stuff object.
+    allOf:
+      - type: object
+      - $ref: "#/definitions/StuffID"
+      - $ref: "#/definitions/StuffName"
